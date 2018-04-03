@@ -12,13 +12,18 @@ import reducers from './reducers'
 
 
 const history = createHistory()
-const middleware = { routerMiddleware(history), thunk};
+const middleware = [routerMiddleware(history), thunk];
 
 const store = createStore (
   reducers,
+  applyMiddleware (...middleware)
 )
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
+ReactDOM.render(
+  <Provider store= {store}>
+  <App />
+  </Provider>
+    ,
+ document.getElementById('root'));
 registerServiceWorker();
