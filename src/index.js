@@ -10,6 +10,10 @@ import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 
 
+const history = createHistory()
+const middleware = { routerMiddleware(history), thunk};
+
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 registerServiceWorker();
