@@ -5,7 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware } from 'redux'
 import {Provider} from 'react-redux'
-import { createHistory } from 'history/createBrowserHistory'
+import createHistory from 'history/createBrowserHistory'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
@@ -21,9 +21,9 @@ const store = createStore (
 
 
 ReactDOM.render(
-  <Provider store= {store}>
-  <App />
+  <Provider store={store}>
+  <App history={history}/>
   </Provider>
-    ,
+  ,
  document.getElementById('root'));
 registerServiceWorker();
