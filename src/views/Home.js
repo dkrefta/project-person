@@ -4,6 +4,7 @@
   import { getUsers } from '../actions'
 import UserItem from '../components/UserItem'
 import 'materialize-css/dist/css/materialize.css'
+import './index.css'
 
   class Home extends Component {
     componentWillMount(){
