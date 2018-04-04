@@ -5,6 +5,7 @@
 import UserItem from '../components/UserItem'
 import 'materialize-css/dist/css/materialize.css'
 import './index.css'
+import { CircleLoader} from 'react-spinners'
 
   class Home extends Component {
     componentWillMount(){
@@ -23,6 +24,15 @@ import './index.css'
             id={currentValue.id}/>
           );
         })
+      }
+      if (this.props.users.type === "START_GET_USERS") {
+        return (
+          <div className="Home-preLoader">
+          <CircleLoader
+          color="#FFF"
+          loading={true}/>
+          </div>
+        );
       }
        return (
        <div className="Home">
