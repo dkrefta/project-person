@@ -1,30 +1,36 @@
-import React, {Component } from 'react'
-import {connect} from 'react-redux'
-import { bindActionCreators} from 'redux'
-import { getUserById} from '../actions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { getUserById } from '../actions'
+import UserDetailCover from '../components/UserDetailCover'
+import UserDetailBody from '../components/UserDetailBody'
 
 class UserDetail extends Component {
-
-    componentWillMount(){
-      this.props.getUserById();
-      console.log();
+  componentWillMount(){
+    this.props.getUserById(this.props.match.params.userId);
+  }
+  render(){
+    if (this.props.userDetail.data) {
+      const { name, last_name, messages } = this.props.userDetail.data;
+      return(
+        <div>
+          <UserDetailCover firstName={ name } lastName={ last_name }/>
+          <UserDetailBody messages={ messages}/>
+        </div>
+      );
     }
-      render () {
-    return (
-      <div>
-      <h2> Hola </h2>
-      </div>
-    );
+    return(<div></div>);
   }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
-    UserDetail: state.getUserById
+    userDetail: state.getUserById
   }
 }
+
 function mapDispatchToProps(dispatch){
-  return bindActionCreators ({
+  return bindActionCreators({
     getUserById
   }, dispatch)
 }
